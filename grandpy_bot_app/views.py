@@ -1,13 +1,18 @@
-from flask import Flask, render_template, request
-from .models import Parser
+from flask import Flask, render_template, request, jsonify
+from .parser import Parser
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def index():
 	return render_template('index.html')
 
-	# if request.method == 'POST':
-	# 	user_input = request.form['msg']
-	# 	query = Parser(user_input)
+
+@app.route('/question', methods=['GET', 'POST'])
+def question():
+	if request.method == 'POST':
+		question = request.form['question']
+		parse_input = Parser(question)
+	return question
 	# return render_template('index.html')
