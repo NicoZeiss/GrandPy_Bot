@@ -13,4 +13,10 @@ class TestParser:
 	def test_user_input(self):
 		assert self.INPUT.user_input == "Hello, where is Eiffel tower ?"
 
-	# We test that parser split the user input
+	# We test that parser split the user input and delete punctuation
+	def test_input_split(self):
+		self.INPUT.split_words()
+		split_input = self.INPUT.split_input
+		assert split_input == ['Hello', 'where', 'is', 'Eiffel', 'tower']
+
+	# We test that parser delete punctuation from
