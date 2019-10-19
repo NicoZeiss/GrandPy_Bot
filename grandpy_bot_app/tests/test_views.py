@@ -7,7 +7,6 @@ from grandpy_bot_app.parser import Parser
 import pytest
 
 
-
 user_question = "Bonjour, ou se trouve la Tour Eiffel ?"
 
 @pytest.fixture(scope='session')

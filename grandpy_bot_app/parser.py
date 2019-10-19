@@ -1,28 +1,39 @@
 import string
-from .config import stop_words, _stop_words
+from .config import STOP_WORDS, _STOP_WORDS
 
 class Parser:
 
-	STOP_WORDS = stop_words
-	_STOP_WORDS = _stop_words
-
 	def __init__(self, u_input):
-		# Making only one list of stop words
+		# Making only one list of stop words, and deleting duplicates
 		self.stop = []
-		self.stop.extend(self.STOP_WORDS)
-		self.stop.extend(self._STOP_WORDS)
+		self.stop.extend(STOP_WORDS)
+		self.stop.extend(_STOP_WORDS)
+		list(set(self.stop))
 
 		# Lowering user input
 		self.user_input = u_input.lower()
-		self.parsed_input = []
+		self.parsed_input_list = []
+		self.parsed_input = ""
 
 	def parse(self):
-		# We delete punctuation
-		str_without_punc = self.user_input.translate(str.maketrans('', '', string.punctuation))
 		# We split the question into words list
-		self.split_input = str_without_punc.split()
+		split_input = self.user_input.split()
 
-		# We test if some words are in stop words list
-		for word in self.split_input:
-			if word not in self.stop:
-				self.parsed_input.append(word)
+		for word in split_input:
+
+			cleaned_word = word.translate(str.maketrans('', '', '.,?!:'))
+			squote = cleaned_word.find("'")
+
+			if squote != -1:
+				squote += 1
+
+				if cleaned_word[squote:] not in self.stop:
+					self.parsed_input_list.append(cleaned_word[squote:])
+
+			else:
+				if cleaned_word not in self.stop:
+					self.parsed_input_list.append(cleaned_word)
+
+		self.parsed_input = ' '.join(self.parsed_input_list)
+
+
