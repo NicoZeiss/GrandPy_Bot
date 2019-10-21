@@ -8,8 +8,10 @@ _STOP_WORDS = ["", "bonjour", "trouve", "grandpy", "salut", "bot", "grandpybot",
 
 # GM API
 GM_API = {
-	'URL': "https://maps.googleapis.com/maps/api/place/findplacefromtext/json",
+	'PLACE_URL': 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json',
+	'GEO_URL': 'https://maps.googleapis.com/maps/api/geocode/json',
 	'REGION': 'FR',
-	'KEY': os.environ['GM_API_KEY']
+	'KEY': os.environ['GM_API_KEY'],
+	'LANGUAGE': 'fr'
 }
 

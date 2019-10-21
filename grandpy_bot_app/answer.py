@@ -6,9 +6,12 @@ class Place:
 
 	def __init__(self, parsed_input):
 		self.parsed_input = parsed_input
-		self.found_result = True
+		self.found_place = True
+		self.found_coords = True
 		self.address = ""
 		self.name = ""
+		self.lat = ""
+		self.lng = ""
 
 	def get_gmaps_resp(self):
 
@@ -17,26 +20,21 @@ class Place:
 		parameters = {'key': GM_API['KEY'],
 			 'input': key_words,
 			 'inputtype': 'textquery',
-			 'language': 'fr',
-			 'fields': 'formatted_address,name',
-			 'locationbias': 'ipbias'
+			 'language': GM_API['LANGUAGE'],
+			 'fields': 'formatted_address,name,geometry',
+			 'locationbias': 'ipbias',
 		}
 
-		resp = requests.get(GM_API['URL'], params=parameters)
+		resp = requests.get(GM_API['PLACE_URL'], params=parameters)
 		data = json.loads(resp.text)
 
 		if data['status'] == "OK":
 			self.address = data['candidates'][0]['formatted_address']
 			self.name = data['candidates'][0]['name']
-			self.get_gmaps_coord()
+			self.lat = str(round(data['candidates'][0]['geometry']['location']['lat'],6))
+			self.lng = str(round(data['candidates'][0]['geometry']['location']['lng'],6))
 
 		else:
-			self.found_result = False
+			self.found_place = False
 
-		print(self.address)
-
-
-	def get_gmaps_coord(self):
-		pass
-		
 
