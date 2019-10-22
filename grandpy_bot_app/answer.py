@@ -37,4 +37,6 @@ class Place:
 		else:
 			self.found_place = False
 
+		return  self.lat
+
 

@@ -4,6 +4,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>GrandPy</title>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.4.1.js') }}"></script>
 	</head>
 
 	<body>
@@ -13,14 +14,12 @@
 		</header>
 
 		<section>
-			<form method="post" action="/question">
-				<p>
-					<label for="msg">Votre question</label>
-					<input type="text" name="question" id="msg" placeholder="Où se trouve la Tour Eiffel?" />
-					<input type="submit" value="Envoyer" />
-				</p>
+			<form id="myform">
+				<input type="text" id="user_input" name="user_input" placeholder="Votre question" />
+				<input id="submit" type="submit" value="Envoyer">
 			</form>
 		</section>
 
 	</body>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/grandpy.js') }}"></script>
 </html>

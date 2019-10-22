@@ -10,17 +10,19 @@ def index():
 	return render_template('index.html')
 
 
-@app.route('/question', methods=['GET', 'POST'])
+@app.route('/question', methods=['POST'])
 def question():
-	if request.method == 'POST':
-		question = request.form['question']
 
-		# We parse user input and return a list with key words
-		parse_input = Parser(question)
-		parse_input.parse()
+	# question = request.form['user_input']
 
-		# We use these key words to search for place with Google Map
-		place = Place(parse_input.parsed_input)
-		data = place.get_gmaps_resp()
+	# # We parse user input and return a list with key words
+	# parse_input = Parser(question)
+	# parse_input.parse()
 
-	return question
+	# # We use these key words to search for place with Google Map
+	# place = Place(parse_input.parsed_input)
+	# data = place.get_gmaps_resp()
+	# print(data)
+
+	# return jsonify(data=data)
+	pass
