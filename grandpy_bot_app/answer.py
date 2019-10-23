@@ -1,4 +1,4 @@
-from .config import GM_API
+from .config import GM_API, GM_API_KEY
 import requests
 import json
 
@@ -17,7 +17,7 @@ class Place:
 
 		key_words = self.parsed_input
 
-		parameters = {'key': GM_API['KEY'],
+		parameters = {'key': GM_API_KEY,
 			 'input': key_words,
 			 'inputtype': 'textquery',
 			 'language': GM_API['LANGUAGE'],
@@ -37,6 +37,6 @@ class Place:
 		else:
 			self.found_place = False
 
-		return  self.lat
+		return  {"lat": self.lat, "lng": self.lng}
 
 
