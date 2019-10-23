@@ -12,6 +12,8 @@ class Place:
 		self.name = ""
 		self.lat = ""
 		self.lng = ""
+		
+		self.get_gmaps_resp()
 
 	def get_gmaps_resp(self):
 
@@ -36,7 +38,5 @@ class Place:
 
 		else:
 			self.found_place = False
-
-		return  {"lat": self.lat, "lng": self.lng}
 
 
