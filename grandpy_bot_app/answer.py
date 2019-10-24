@@ -1,4 +1,4 @@
-from .config import GM_URL, GM_KEY, GM_PARAMS, WIKI_URL, WIKI_PARAMS
+from .config import GM_URL, GM_KEY, GM_PARAMS, WIKI_URL, WIKI_PARAMS, WIKI_LINK
 import requests
 import json
 
@@ -7,6 +7,8 @@ class Place:
 	def __init__(self, parsed_input):
 		self.parsed_input = parsed_input
 		self.error = 0
+
+		# GM datas
 		self.address = ""
 		self.name = ""
 		self.lat = ""
@@ -39,4 +41,6 @@ class Place:
 		else:
 			self.error = 2
 
+
+	
 

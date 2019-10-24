@@ -29,6 +29,8 @@ GM_KEY = os.environ['GM_API_KEY']
 
 WIKI_URL = 'https://fr.wikipedia.org/w/api.php'
 
+WIKI_LINK = 'http://fr.wikipedia.org/?curid='
+
 WIKI_PARAMS = {
 	'action': 'query',
 	'prop': 'extracts',
