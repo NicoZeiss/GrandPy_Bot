@@ -21,12 +21,3 @@ def test_home_page(client):
     assert rsp.status == '200 OK'
     assert '<title>GrandPy</title>' in html
 
-# We test that user input is posted and sent to our parser
-def test_user_post(client):
-	rv = client.post('/question', data=dict(question=user_question), follow_redirects=True)
-	parser = Parser(user_question)
-	assert b'Bonjour, ou se trouve la Tour Eiffel ?' in rv.data
-	assert parser.user_input == "bonjour, ou se trouve la tour eiffel ?"
-
-
-	

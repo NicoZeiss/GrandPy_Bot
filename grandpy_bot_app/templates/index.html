@@ -19,7 +19,7 @@
 		</div>
 		
 		<section>
-			<form id="myform">
+			<form id="myform" action="/question" method="post">
 				<input type="text" id="user_input" name="user_input" placeholder="Votre question" />
 				<input id="submit" type="submit" value="Envoyer">
 			</form>
@@ -28,7 +28,7 @@
 		<div id="map"></div>
 
 	</body>
-	<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ GmApiKey }}"></script>
+	<!-- <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script> -->
+	<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ GmApiKey }}"></script> -->
 
 </html>

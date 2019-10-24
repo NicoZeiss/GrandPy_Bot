@@ -15,7 +15,8 @@ class Parser:
 		self.parsed_input_list = []
 		self.parsed_input = ""
 
-		self.parse()
+		if len(self.user_input) >= 5:
+			self.parse()
 
 	def parse(self):
 		# We split the question into words list
