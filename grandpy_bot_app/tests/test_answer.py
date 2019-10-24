@@ -8,7 +8,7 @@ import pytest
 
 class TestPlace:
 	parsed_input = "tour eiffel"
-	bad_input = "dsgrdeyh"
+	wrong_input = "dsgrdeyh"
 	short_input = ""
 
 	# We test that too short input generate an error
@@ -28,7 +28,7 @@ class TestPlace:
 
 	# We test that GPlace API return an error if it can't find any result
 	def test_error_gmap_resp(self):
-		PLACE = script.Place(self.bad_input)
+		PLACE = script.Place(self.wrong_input)
 		assert PLACE.error == 2
 
 	# We test that Wiki API return a page id, an extract and the wiki link
@@ -48,9 +48,14 @@ class TestPlace:
 	# We test that app return an error when input is too short
 	def test_err_mess1(self):
 		PLACE = script.Place(self.short_input)
-		assert PLACE.err_mess == "Moi pas comprendre toi ! Toi être plus concis avec moi !"
+		assert PLACE.err_mess == "Moi pas comprendre toi ! Toi être plus précis avec moi !"
 
-	
+	# We test that app return an error when GMaps can't find any result
+	def test_err_mess2(self):
+		PLACE = script.Place(self.wrong_input)
+		assert PLACE.err_mess == "Désolé bel internaute, mais il va falloir être un peu plus concis, je ne trouve pas le lieu auquel tu fais référence !"
+
+
 
 
 

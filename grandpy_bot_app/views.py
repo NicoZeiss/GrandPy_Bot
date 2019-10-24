@@ -28,6 +28,6 @@ def question():
 		name=place.name,
 		addresse=place.address_mess,
 		wikinfo=place.info_mess,
-		error=place.err_mes
+		error=place.err_mess
 		)
 
