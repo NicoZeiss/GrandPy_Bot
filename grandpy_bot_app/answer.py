@@ -9,19 +9,14 @@ class Place:
 		self.error = 0
 
 		# GM datas
-		self.address = ""
-		self.name = ""
-		self.lat = ""
-		self.lng = ""
+		self.gmap_datas = ""
+		self.address_message = ""
 
 		# Wiki datas
-		self.page_id = ""
-		self.extract = ""
-		self.link = ""
+		self.wiki_datas = ""
+		self.wiki_message = ""
 
-		# Messages
-		self.address_mess = ""
-		self.info_mess = ""
+		# Error message
 		self.err_mess = ""
 		
 		self.filter()
@@ -47,10 +42,11 @@ class Place:
 		data = json.loads(resp.text)
 
 		if data['status'] == "OK":
-			self.address = data['candidates'][0]['formatted_address']
-			self.name = data['candidates'][0]['name']
-			self.lat = str(round(data['candidates'][0]['geometry']['location']['lat'],6))
-			self.lng = str(round(data['candidates'][0]['geometry']['location']['lng'],6))
+			address = data['candidates'][0]['formatted_address']
+			name = data['candidates'][0]['name']
+			lat = str(round(data['candidates'][0]['geometry']['location']['lat'],6))
+			lng = str(round(data['candidates'][0]['geometry']['location']['lng'],6))
+			self.gmap_datas = {"address": address, "name": name, "lat": lat, "lng": lng}
 
 		else:
 			self.error = 2
@@ -59,23 +55,22 @@ class Place:
 	def get_wiki_info(self):
 
 		parameters = WIKI_PARAMS
-		parameters['gsrsearch'] = self.name
+		parameters['gsrsearch'] = self.gmap_datas["name"]
 
 		resp = requests.get(WIKI_URL, params=parameters)
 		resp_json = json.loads(resp.text)
-		
-		try:
-			self.page_id = resp_json['query']['pageids'][0]
-			self.extract = resp_json['query']['pages'][self.page_id]['extract'].replace('\n', ' ')
-			self.link = WIKI_LINK + self.page_id
 
-		except KeyError:
-			self.error = 3
+		page_id = resp_json['query']['pageids'][0]
+		extract = resp_json['query']['pages'][page_id]['extract'].replace('\n', ' ')
+		link = WIKI_LINK + page_id
+
+		self.wiki_datas = {"page_id": page_id, "extract": extract, "link": link}
+
 
 	def message(self):
 		if self.error == 0:
-			self.address_mess = MESSAGES["resp_address"]["1"] + " " + self.address
-			self.info_mess = MESSAGES["resp_info"]["1"] + " " + self.extract
+			self.address_message = MESSAGES["resp_address"]["1"] + " " + self.gmap_datas["address"]
+			self.wiki_message = MESSAGES["resp_info"]["1"] + " " + self.wiki_datas["extract"]
 
 		elif self.error == 1:
 			self.err_mess = MESSAGES["err_input"]["1"]
@@ -85,4 +80,5 @@ class Place:
 
 		elif self.error == 3:
 			self.err_mess = MESSAGES['err_wiki']["1"]
+
 

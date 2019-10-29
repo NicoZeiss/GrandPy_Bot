@@ -23,11 +23,9 @@ def question():
 	place = Place(parse_input.parsed_input)
 
 	return jsonify(
-		lat=place.lat,
-		lng=place.lng,
-		name=place.name,
-		addresse=place.address_mess,
-		wikinfo=place.info_mess,
+		gmap_datas=place.gmap_datas,
+		wiki_message=place.wiki_message,
+		address_message=place.address_message,
 		error=place.err_mess
 		)
 
