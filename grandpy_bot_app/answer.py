@@ -78,7 +78,3 @@ class Place:
 		elif self.error == 2:
 			self.err_mess = MESSAGES['err_place']["1"]
 
-		elif self.error == 3:
-			self.err_mess = MESSAGES['err_wiki']["1"]
-
-

@@ -48,5 +48,4 @@ MESSAGES = {
 "resp_info": {"1": "Et en bonus, je peux même t'en dire un peu plus, ça ne te coûtera pas un denier de plus !"},
 "err_input": {"1": "Moi pas comprendre toi ! Toi être plus précis avec moi !"},
 "err_place": {"1": "Désolé bel internaute, mais il va falloir être un peu plus concis, je ne trouve pas le lieu auquel tu fais référence !"},
-"err_wiki": {"1": "Quel est donc ce lieu mystérieux ? Je n'ai aucune information à son sujet ! PaPy perd la boule !"},
 }

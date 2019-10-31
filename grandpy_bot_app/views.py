@@ -21,11 +21,15 @@ def question():
 
 	# We use these key words to search for place with Google Map
 	place = Place(parse_input.parsed_input)
+	print(place.err_mess)
+	print(place.error)
+	print(place.gmap_datas)
 
 	return jsonify(
 		gmap_datas=place.gmap_datas,
 		wiki_message=place.wiki_message,
 		address_message=place.address_message,
-		error=place.err_mess
+		error_message=place.err_mess,
+		error=place.error
 		)
 
