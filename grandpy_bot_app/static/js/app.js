@@ -7,10 +7,13 @@ $(document).ready(function() {
 
     var userInput = $('#user_input');
     var textInput = $('#user_input').val() + "";
+    var scrollMess = document.getElementById("chatbox");
 
     displayQuestion(textInput);
+    scrollMess.scrollTop = scrollMess.scrollHeight;
 
-    $('#loading').show();
+    var loadIc = document.getElementById("loading");
+    loadIc.style.visibility = "visible";
   	
   	$.ajax({
   		type: "POST",
@@ -18,10 +21,11 @@ $(document).ready(function() {
   		data: userInput,
 
   	}).done(function(response) {
-      $('#map').hide();
+
       userInput.val('');
 
-      displayAnswer(textInput, response['address_message'], response['wiki_message'], response['error'], response['error_message']);
+      displayAnswer(textInput, response['address_message'], response['wiki_message'], response['error'], response['error_message'], response['wiki_datas']['link']);
+      scrollMess.scrollTop = scrollMess.scrollHeight;
 
       var objDiv = document.getElementById("chatbox");
       objDiv.scrollTop = objDiv.scrollHeight;
@@ -31,10 +35,11 @@ $(document).ready(function() {
         var lng = parseFloat(response['gmap_datas']['lng']);
         var name = response['gmap_datas']['name'];
         initMap(lat, lng, name);
+        $('#map').hide();
         $('#map').fadeIn(2000);
     }
 
-      $('#loading').hide();
+      loadIc.style.visibility = "hidden";
       
   	});
 
@@ -50,19 +55,17 @@ function displayQuestion(textInput){
 
 
 // Display messages in the chatbox
-function displayAnswer(textInput, addressMess, infoMess, error, err_mess){
+function displayAnswer(textInput, addressMess, infoMess, error, err_mess, link){
   var botName = "GrandPy : ";
   
   if (error == 0) {
     $('#chatbox ul').append('<li class="message">' + '<span class="names">' + botName + '</span>' + addressMess + '</li>');
     $('#chatbox ul').append('<li class="message">' + '<span class="names">' + botName + '</span>' + infoMess + '</li>');
+    $('#chatbox ul').append('<li class="message">' + '<span class="names">' + botName + '</span>' + "Pour sen savoir plus, " + '<a href="' + link + '">Wikipedia</a>' + '</li>');
   }
   else if (error != 0) {
     $('#chatbox ul').append('<li class="message">' + '<span class="names">' + botName + '</span>' + err_mess + '</li>');
   }
-  var scrollMess = document.getElementById("chatbox");
-  scrollMess.scrollTop = scrollMess.scrollHeight;
-
 }
 
 
