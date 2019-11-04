@@ -4,10 +4,14 @@
 	margin-top: 25px;
 	margin-left: auto;
 	margin-right: auto;
+	border-radius: 6px;
 }
 
 #user_input {
 	width: 20%;
+	font-size: 14px;
+	padding: 5px 10px;
+	border-radius: 6px;
 }
 
 #loading {
@@ -30,7 +34,7 @@ body {
 .message {
 	padding-bottom: 10px;
 	text-align: justify;
-	color: #26160C;
+	color: #DAC6B9;
 }
 
 .names {
@@ -43,17 +47,98 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top:25px;
-	background: #E5E0DA;
+	background-color: #26160C;
+	opacity: 0.7;
 	overflow: auto;
+	border-radius: 6px;
 }
 
 #myform {
 	text-align: center;
 }
 
-footer {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0
+#footer {
+	margin-top: 40px;
+	display: flex;
+	justify-content: space-around;
+}
+
+#logo {
+	max-width: 100px;
+	height: auto;
+	margin-left: auto;
+}
+
+.header h1 {
+	color: #26160C;
+	opacity: 0.9;
+	margin-right: auto;
+	margin-left : 30px;
+	font-size: 40px;
+}
+
+.header {
+	display: flex;
+	border-bottom: 2px solid #26160C;
+	margin-bottom: 30px;
+	padding-bottom: 10px;
+}
+
+#submit {
+	color: #26160C;
+	border: 2px solid #26160C;
+	border-radius: 6px;
+	text-align: center;
+	display: inline-block;
+	font-size: 14px;
+	padding: 5px 10px;
+	cursor: pointer;
+	-webkit-transition-duration: 0.4s;
+  	transition-duration: 0.4s;
+}
+
+#submit:hover {
+	background-color: #26160C;
+	color: #DAC6B9;
+}
+
+
+@media screen and (max-width: 768px) {
+
+	#logo {
+		display: none;
+	}
+
+	#chatbox {
+		width: 100%;
+	}
+
+	#map {
+		width: 100%;
+	}
+
+	#myform {
+		display: flex;
+		flex-direction: column;
+	}
+
+	#user_input {
+		width: 90%;
+		margin-bottom: 5px;
+	}
+
+	#submit {
+		width: 50%;
+		margin:auto;
+	}
+
+	#footer {
+		display: flex;
+		flex-direction: column;
+	}
+
+	#footer p {
+		text-align: center;
+	}
+
 }
