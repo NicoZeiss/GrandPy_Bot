@@ -1,12 +1,13 @@
-#map {
-	height: 50%;
-	width: 30%;
-	margin-top: 50px;
+.container {
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
 }
-html, body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
+
+#map {
+	height: 30%;
+	width: 30%;
 }
 
 #user_input {
@@ -15,4 +16,14 @@ html, body {
 
 #loading {
 	display: none;
+}
+
+#chatbox ul {
+	list-style:none;
+}
+
+body {
+	background-image: url("../img/background.png");
+	background-size: cover;
+	background-repeat: no-repeat;
 }

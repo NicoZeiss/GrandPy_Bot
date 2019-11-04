@@ -2,16 +2,19 @@
 
 <html>
 	<head>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
 		<title>GrandPy</title>
+		<meta charset="utf-8" />
+<!-- 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+<!-- 		<meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<!-- 		<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}"> -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.4.1.js') }}"></script>
 	</head>
 
 	<body>
 
 		<header>
-			<h1>CREER GRANDPY LE ROBOT</h1>
+			<h1>GRANDPY LE PAPY ROBOT</h1>
 		</header>
 
 		<div id="loading">
@@ -19,23 +22,27 @@
 		</div>
 		
 		<div id="chat">
-
 			<form id="myform">
-				<input type="text" id="user_input" name="user_input" placeholder="Votre question" />
-				<input id="submit" type="submit" value="Envoyer">
+				<input type="text" id="user_input" name="user_input" placeholder="Ex : Quelle est l'adresse d'OpenClassrooms ?" />
+				<input id="submit" type="submit" value="Demander">
 			</form>
-
+			
 			<div id="chatbox">
 				<ul>
 				</ul>
 			</div>
 
 			<div id="map"></div>
-
 		</div>
 
-
 	</body>
+
+	<footer>
+		<p>Site réalisé par : Nicolas ZEISSER</p>
+		<p><a href="https://github.com/NicoZeiss/GrandPy_Bot">Repository Github</a></p>
+		<p><a href="https://fr.linkedin.com/in/nicolas-zeisser-0a4b2511a">LinkedIn</a></p>
+	</footer>
+
 	<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ GmApiKey }}"></script>
 
