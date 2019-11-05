@@ -1,5 +1,5 @@
 import os
-#from boto.s3.connection import S3Connection
+from boto.s3.connection import S3Connection
 
 
 # Stop words from free base
@@ -23,11 +23,10 @@ GM_PARAMS = {
 	'locationbias': 'ipbias',
 }
 
-# if os.environ.get('GM_API_KEY') is None:
-# 	GM_KEY = S3Connection(os.environ['GM_KEY'])
-# else:
-# 	GM_KEY = os.environ['GM_API_KEY']
-GM_KEY = "AIzaSyAZeTzZMgk7o5OxsCDvSdNso27oms_1S20"
+if os.environ.get('GM_API_KEY') is None:
+	GM_KEY = S3Connection(os.environ['GM_KEY'])
+else:
+	GM_KEY = os.environ['GM_API_KEY']
 
 
 
