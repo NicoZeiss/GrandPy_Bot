@@ -1,1 +1,3 @@
 env/
+grandpy_bot_app/__pycache__
+grandpy_bot_app/tests/__pycache__
