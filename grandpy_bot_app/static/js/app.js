@@ -9,13 +9,16 @@ $(document).ready(function() {
     var textInput = $('#user_input').val() + "";
     var scrollMess = document.getElementById("chatbox");
 
+    // We display user input on the chat
     displayQuestion(textInput);
     scrollMess.scrollTop = scrollMess.scrollHeight;
-
+    
+    // Loading icon is displayed on screen
     var loadIc = document.getElementById("loading");
     loadIc.style.visibility = "visible";
   	
-  	$.ajax({
+  	// with AJAX POST method, user input is send to backend app
+    $.ajax({
   		type: "POST",
   		url: "/question",
   		data: userInput,
@@ -24,13 +27,15 @@ $(document).ready(function() {
 
       userInput.val('');
 
+      // call to the chat function with datas from backend parser
       displayAnswer(textInput, response['address_message'], response['wiki_message'], response['error'], response['error_message'], response['wiki_datas']['link']);
       scrollMess.scrollTop = scrollMess.scrollHeight;
 
       var objDiv = document.getElementById("chatbox");
       objDiv.scrollTop = objDiv.scrollHeight;
 
-  		if (response['error'] == 0) {
+  		// the map from GMAPS is displayed
+      if (response['error'] == 0) {
         var lat = parseFloat(response['gmap_datas']['lat']);
         var lng = parseFloat(response['gmap_datas']['lng']);
         var name = response['gmap_datas']['name'];
@@ -42,20 +47,19 @@ $(document).ready(function() {
       loadIc.style.visibility = "hidden";
       
   	});
-
   });
-
 });
 
 
 function displayQuestion(textInput){
+  // display the user's input
   var userName = "Vous : ";
   $('#chatbox ul').append('<li class="message">' + '<span class="names">' + userName + '</span>' + textInput + '</li>');
 }
 
 
-// Display messages in the chatbox
 function displayAnswer(textInput, addressMess, infoMess, error, err_mess, link){
+  // Display messages in the chatbox
   var botName = "GrandPy : ";
   
   if (error == 0) {
@@ -69,9 +73,10 @@ function displayAnswer(textInput, addressMess, infoMess, error, err_mess, link){
 }
 
 
-// init GMaps and Marker
+
 function initMap(lat, lng, name){
-	var myLatLng = {lat: lat, lng: lng};
+	// init GMaps and Marker
+  var myLatLng = {lat: lat, lng: lng};
 	var map = new google.maps.Map(document.getElementById('map'), {
 		center: myLatLng,
 		zoom:15
