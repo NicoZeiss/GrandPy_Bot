@@ -1,5 +1,5 @@
 import os
-from boto.s3.connection import S3Connection
+# from boto.s3.connection import S3Connection
 
 
 # Stop words from free base
@@ -24,7 +24,7 @@ GM_PARAMS = {
 }
 
 if os.environ.get('GM_API_KEY') is None:
-	GM_KEY = S3Connection(os.environ['GM_KEY'])
+	GM_KEY = os.environ['GM_KEY']
 else:
 	GM_KEY = os.environ['GM_API_KEY']
 
