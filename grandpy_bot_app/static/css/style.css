@@ -67,8 +67,10 @@ body {
 
 #logo {
 	max-width: 100px;
-	height: auto;
+	max-height: 100px;
 	margin-left: auto;
+	margin-top: auto;
+	margin-bottom: auto;
 }
 
 .header h1 {
