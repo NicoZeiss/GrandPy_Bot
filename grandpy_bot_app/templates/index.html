@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="fr">
 	<head>
 		<title>GrandPy</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.4.1.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/jquery-3.4.1.js') }}"></script>
 	</head>
 
-	<div class="header">
-		<img src="{{ url_for('static', filename='img/grandpy.png') }}" id="logo">
-		<h1>GrandPy, le papy robot qui sait tout !</h1>
-	</div>
-
 	<body>
+
+		<div class="header">
+			<img src="{{ url_for('static', filename='img/grandpy.png') }}" id="logo" alt="Logo which represent GrandPy">
+			<h1>GrandPy, le papy robot qui sait tout !</h1>
+		</div>
 		
 		<div id="loading">
-			<img src="{{ url_for('static', filename='img/loading.gif') }}">
+			<img src="{{ url_for('static', filename='img/loading.gif') }}" alt="Background picture">
 		</div>
 
 		<div id="chat">
@@ -35,15 +35,15 @@
 			<div id="map"></div>
 		</div>
 
+		<div id="footer">
+			<p>Site réalisé par : Nicolas ZEISSER</p>
+			<p><a href="https://github.com/NicoZeiss/GrandPy_Bot">Repository Github</a></p>
+			<p><a href="https://fr.linkedin.com/in/nicolas-zeisser-0a4b2511a">LinkedIn</a></p>
+		</div>
+
 	</body>
 
-	<div id="footer">
-		<p>Site réalisé par : Nicolas ZEISSER</p>
-		<p><a href="https://github.com/NicoZeiss/GrandPy_Bot">Repository Github</a></p>
-		<p><a href="https://fr.linkedin.com/in/nicolas-zeisser-0a4b2511a">LinkedIn</a></p>
-	</div>
-
-	<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/app.js') }}"></script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ GmApiKey }}"></script>
 
 </html>
