@@ -1,5 +1,5 @@
 # GrandPy_Bot
-Ce projet est le huitième réalisé dans le cadre du parcours **OpenClassrooms** ***[Développeur Python](https://openclassrooms.com/fr/paths/68-developpeur-dapplication-python)***.  
+Ce projet est le septième réalisé dans le cadre du parcours **OpenClassrooms** ***[Développeur Python](https://openclassrooms.com/fr/paths/68-developpeur-dapplication-python)***.  
 Le site est accessible à l'adresse suivante : **[Mon appli](http://grandpy-bot-nz.herokuapp.com/)**  
 Il a été réalisé de manière responsive, pour pouvoir s'adapter à des supports plus petits, tels mobiles ou tablettes.
 
